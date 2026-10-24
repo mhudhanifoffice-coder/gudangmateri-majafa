@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gudang Materi MA Al-Jafariyah</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#e8eeec;--panel:#f5f8f7;--ink:#12302b;--mute:#586d68;--line:#c9d6d2;--acc:#0e5c4f;--onacc:#fff;--brass:#a8803a;--paper:#fffffd;--pink:#1c2b28;--pmute:#5f716c;--danger:#b91c1c;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Figtree",system-ui,sans-serif;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a17;--panel:#142421;--ink:#e3ece9;--mute:#93a9a3;--line:#2a413b;--acc:#5cc4ad;--onacc:#08201b;--brass:#c9a35a;--danger:#f87171;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1a17;--panel:#142421;--ink:#e3ece9;--mute:#93a9a3;--line:#2a413b;--acc:#5cc4ad;--onacc:#08201b;--brass:#c9a35a;--danger:#f87171;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{min-height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.hide{display:none!important}
+#home{display:grid;place-items:center;min-height:92vh;padding:48px 20px}
+.wrap{width:100%;max-width:460px;text-align:center}
+h1{font:700 clamp(2.9rem,10vw,4.4rem)/1 var(--serif);margin:0;letter-spacing:-.01em}
+.sch{font:italic 600 1.4rem var(--serif);color:var(--brass);margin:8px 0 0}
+.rule{width:60px;border-top:3px double var(--brass);margin:28px auto 34px}
+#step h2{font:600 1.6rem var(--serif);margin:0 0 6px}
+.sub{color:var(--mute);margin:0 0 20px}
+.row{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 4px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;font-size:1.05rem;transition:padding .2s,color .2s}
+.row:first-of-type{margin-top:14px;border-top:1px solid var(--line)}
+.row:hover{color:var(--acc);padding-left:12px}
+.row small,.it small{color:var(--mute);font-size:.82rem}
+.cls{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px;margin-bottom:18px}
+.cls button{padding:22px 6px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);transition:border-color .2s}
+.cls button:hover{border-color:var(--brass)}
+.cls b{display:block;font:600 2.3rem/1.1 var(--serif)}
+.cls small{color:var(--mute);font-size:.8rem}
+.lnk{background:none;border:0;color:var(--mute);text-decoration:underline;text-underline-offset:3px;padding:6px 4px}
+.lnk:hover{color:var(--acc)}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;max-width:1120px;margin:0 auto;padding:12px 20px;border-bottom:1px solid var(--line)}
+#crumb{font:600 1.3rem var(--serif)}
+.grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;max-width:1120px;margin:0 auto;padding:22px 20px 60px}
+aside{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;align-self:start}
+aside h3{font:600 1.35rem var(--serif);margin:0 0 12px}
+label{display:block;font-size:.88rem;color:var(--mute);margin-bottom:10px}
+input,select,textarea{display:block;width:100%;margin-top:4px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+textarea{resize:vertical;min-height:110px;line-height:1.5}
+#msg,#note{min-height:1.4em;font-size:.88rem;color:var(--brass);margin:2px 0 0}
+#list{max-height:min(50vh,430px);overflow:auto;margin-top:8px}
+.sm{font:italic 600 1.1rem var(--serif);color:var(--mute);margin:14px 0 4px}
+.it{display:block;width:100%;text-align:left;border:0;border-left:3px solid transparent;background:none;padding:8px 10px;border-radius:0 6px 6px 0}
+.it b{display:block;font-size:.85rem;font-weight:600;color:var(--acc)}
+.it span{display:block;line-height:1.35}
+.it:hover,.it.on{background:var(--bg)}
+.it.on{border-left-color:var(--brass)}
+.mut{color:var(--mute);font-size:.9rem}
+.paper{display:flex;flex-direction:column;width:100%;max-width:640px;margin:0 auto;aspect-ratio:210/297;padding:clamp(26px,7%,56px);background:var(--paper);color:var(--pink);border-top:3px double var(--brass);box-shadow:0 1px 2px rgba(8,28,24,.14),0 14px 34px -12px rgba(8,28,24,.34)}
+.paper.r{animation:sr .35s ease both}
+.paper.l{animation:sl .35s ease both}
+@keyframes sr{from{opacity:0;transform:translateX(18px)}}
+@keyframes sl{from{opacity:0;transform:translateX(-18px)}}
+@media (prefers-reduced-motion:reduce){.paper{animation:none!important}.row{transition:none}}
+.lh{display:flex;justify-content:space-between;gap:12px;font:italic 600 1.05rem var(--serif);color:var(--pmute);border-bottom:1px solid #e1e8e5;padding-bottom:10px;margin-bottom:28px}
+.paper h2{font:700 clamp(1.75rem,4.4vw,2.3rem)/1.15 var(--serif);margin:0 0 6px}
+.meta{font-size:.88rem;color:var(--pmute);margin-bottom:24px}
+.tx p{margin:0 0 1em;font-size:.98rem;line-height:1.8;text-align:justify;hyphens:auto}
+.pg{margin-top:auto;padding-top:20px;text-align:center;font-size:.8rem;color:var(--pmute)}
+.ctl{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px 0 18px;text-align:center}
+.btn{border:1px solid var(--line);background:transparent;padding:9px 20px;border-radius:999px;font-weight:500;transition:border-color .2s,opacity .2s}
+.btn:hover:not(:disabled){border-color:var(--acc)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
+.btn.dng{border-color:var(--danger);color:var(--danger)}
+.btn.dng:hover:not(:disabled){background:var(--danger);color:#fff}
+.btn.sm-btn{padding:5px 12px;font-size:.82rem}
+.btn:disabled{opacity:.45;cursor:default}
+#st{font-size:.92rem;color:var(--mute);min-width:150px}
+.dl{max-width:640px;margin:0 auto;padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--panel);text-align:center}
+.dl h3{font:600 1.25rem var(--serif);margin:0 0 10px}
+.dl div{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.none .ctl,.none .dl{display:none}
+.empty{margin:auto;text-align:center;color:var(--pmute)}
+
+/* Floating Admin Trigger & Status Badge */
+#fab-wrap{position:fixed;bottom:16px;right:16px;z-index:900;display:flex;align-items:center;gap:8px}
+#sync-badge{font-size:.75rem;padding:4px 10px;border-radius:999px;background:var(--panel);border:1px solid var(--line);color:var(--mute);box-shadow:0 2px 8px rgba(0,0,0,.1);display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--brass);display:inline-block}
+.dot.ok{background:#10b981}
+.dot.err{background:var(--danger)}
+#admin-fab{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:.82rem;font-weight:500;box-shadow:0 4px 12px rgba(0,0,0,.12);display:flex;align-items:center;gap:6px;transition:border-color .2s,transform .15s}
+#admin-fab:hover{border-color:var(--brass);transform:translateY(-1px)}
+
+/* Modal & Admin Panel Styles */
+.modal-backdrop{position:fixed;inset:0;background:rgba(8,22,19,.62);backdrop-filter:blur(3px);z-index:1000;display:grid;place-items:center;padding:16px;overflow-y:auto}
+.modal-card{background:var(--panel);border:1px solid var(--line);border-top:3px double var(--brass);border-radius:12px;width:100%;max-width:400px;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.modal-card.wide{max-width:860px;max-height:90vh;display:flex;flex-direction:column;padding:0;overflow:hidden}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--bg)}
+.modal-head h3{font:700 1.45rem var(--serif);margin:0}
+.modal-body{padding:20px 22px;overflow-y:auto;flex:1}
+.modal-foot{padding:12px 22px;border-top:1px solid var(--line);background:var(--bg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);padding:0 22px;background:var(--bg);overflow-x:auto}
+.tab-btn{padding:11px 14px;border:0;border-bottom:2px solid transparent;background:none;font-weight:500;font-size:.9rem;color:var(--mute);white-space:nowrap}
+.tab-btn.active{color:var(--acc);border-bottom-color:var(--brass)}
+.adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.adm-box{border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--bg);margin-bottom:14px}
+.adm-box h4{font:600 1.15rem var(--serif);margin:0 0 10px;color:var(--ink)}
+.adm-item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;border-bottom:1px solid var(--line);font-size:.92rem}
+.adm-item:last-child{border-bottom:0}
+.adm-actions{display:flex;gap:6px;flex-shrink:0}
+.status-msg{font-size:.85rem;color:var(--brass);margin:0}
+
+@media (max-width:820px){
+  .grid{grid-template-columns:1fr}
+  #list{max-height:210px}
+  .adm-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<section id="home"><div class="wrap">
+  <h1 id="ui-title">Gudang Materi</h1>
+  <p class="sch" id="ui-sch">MA Al-Jafariyah</p>
+  <div class="rule"></div>
+  <div id="step"></div>
+</div></section>
+
+<section id="reader" class="hide">
+  <header class="bar">
+    <button class="lnk" id="hb">Gudang Materi</button>
+    <span id="crumb"></span>
+    <button class="lnk" id="hc">Ganti pelajaran</button>
+  </header>
+  <div class="grid">
+    <aside>
+      <h3>Cari materi</h3>
+      <label>Materi ke<input id="qn" type="number" min="1" inputmode="numeric" placeholder="contoh: 2"></label>
+      <label>Tanggal pertemuan<input id="qd" type="date"></label>
+      <p id="msg" role="status"></p>
+      <div id="list"></div>
+    </aside>
+    <main>
+      <article id="paper" class="paper"></article>
+      <nav class="ctl">
+        <button class="btn" id="pv">Sebelumnya</button>
+        <span id="st"></span>
+        <button class="btn pri" id="nx">Berikutnya</button>
+      </nav>
+      <section class="dl">
+        <h3>Unduh materi</h3>
+        <div>
+          <button class="btn pri" id="d1">PDF materi ini</button>
+          <button class="btn" id="d2">PDF semua materi kelas</button>
+        </div>
+        <p id="note" role="status"></p>
+      </section>
+    </main>
+  </div>
+</section>
+
+<!-- Tombol Kecil Panel Admin & Indikator Cloud -->
+<div id="fab-wrap">
+  <div id="sync-badge" title="Status Koneksi Cloud Firebase">
+    <span class="dot" id="sync-dot"></span>
+    <span id="sync-text">Menghubungkan…</span>
+  </div>
+  <button id="admin-fab" title="Buka Panel Admin">⚙ Admin</button>
+</div>
+
+<!-- Modal Login Password Admin -->
+<div id="login-modal" class="modal-backdrop hide">
+  <div class="modal-card">
+    <h3 style="font:700 1.5rem var(--serif);margin:0 0 6px">Login Panel Admin</h3>
+    <p class="mut" style="margin:0 0 14px">Masukkan kata sandi untuk mengelola seluruh fitur dan materi secara realtime.</p>
+    <form id="login-form">
+      <label>Password Admin
+        <input type="password" id="adm-pass" placeholder="Masukkan password..." autocomplete="off" required>
+      </label>
+      <p id="login-err" style="color:var(--danger);font-size:.85rem;min-height:1.3em;margin:4px 0 10px"></p>
+      <div style="display:flex;justify-content:flex-end;gap:8px">
+        <button type="button" class="btn sm-btn" id="login-cancel">Batal</button>
+        <button type="submit" class="btn pri sm-btn">Masuk</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Konfirmasi Hapus Custom (Tanpa alert/confirm bawaan browser) -->
+<div id="confirm-modal" class="modal-backdrop hide" style="z-index:1100">
+  <div class="modal-card">
+    <h3 style="font:700 1.4rem var(--serif);margin:0 0 8px">Konfirmasi Hapus</h3>
+    <p id="confirm-text" class="mut" style="margin:0 0 18px"></p>
+    <div style="display:flex;justify-content:flex-end;gap:8px">
+      <button type="button" class="btn sm-btn" id="confirm-no">Batal</button>
+      <button type="button" class="btn dng sm-btn" id="confirm-yes">Ya, Hapus</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Panel Admin Lengkap -->
+<div id="admin-modal" class="modal-backdrop hide">
+  <div class="modal-card wide">
+    <div class="modal-head">
+      <h3>Panel Admin Realtime</h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn sm-btn" id="adm-logout">Keluar Akun</button>
+        <button class="btn sm-btn" id="adm-close">Tutup ✕</button>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-materi">1. Kelola Materi</button>
+      <button class="tab-btn" data-tab="tab-mapel">2. Mata Pelajaran</button>
+      <button class="tab-btn" data-tab="tab-umum">3. Identitas & Kelas</button>
+    </div>
+
+    <div class="modal-body">
+      <!-- TAB 1: KELOLA MATERI -->
+      <div id="tab-materi" class="adm-tab">
+        <div class="adm-grid" style="margin-bottom:14px">
+          <label>Pilih Mata Pelajaran
+            <select id="adm-sel-mapel"></select>
+          </label>
+          <label>Pilih Kelas
+            <select id="adm-sel-kelas"></select>
+          </label>
+        </div>
+
+        <div class="adm-box">
+          <h4 id="form-materi-title">Tambah Materi Baru</h4>
+          <form id="form-materi">
+            <input type="hidden" id="mat-edit-idx" value="-1">
+            <div class="adm-grid">
+              <label>Pertemuan / Materi Ke-
+                <input type="number" id="mat-no" min="1" required placeholder="Contoh: 1">
+              </label>
+              <label>Tanggal Pertemuan
+                <input type="date" id="mat-tgl" required>
+              </label>
+            </div>
+            <label>Judul Materi
+              <input type="text" id="mat-judul" required placeholder="Contoh: Hakikat dan Fungsi Bahasa Indonesia">
+            </label>
+            <label>Isi Materi (Pisahkan setiap paragraf dengan baris baru / Enter)
+              <textarea id="mat-isi" required placeholder="Tulis paragraf pertama di sini...&#10;&#10;Tulis paragraf kedua di sini..."></textarea>
+            </label>
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+              <button type="button" class="btn sm-btn hide" id="mat-cancel-edit">Batal Edit</button>
+              <button type="submit" class="btn pri sm-btn" id="mat-submit-btn">Simpan Materi ke Cloud</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="adm-box">
+          <h4>Daftar Materi di Kelas Ini</h4>
+          <div id="adm-list-materi"></div>
+        </div>
+      </div>
+
+      <!-- TAB 2: MATA PELAJARAN -->
+      <div id="tab-mapel" class="adm-tab hide">
+        <div class="adm-box">
+          <h4 id="form-mapel-title">Tambah / Edit Mata Pelajaran</h4>
+          <form id="form-mapel">
+            <input type="hidden" id="mapel-edit-index" value="-1">
+            <div class="adm-grid">
+              <label>Kode Singkat ID (tanpa spasi, misal: bind, fikih)
+                <input type="text" id="mapel-id" required placeholder="contoh: sejarah">
+              </label>
+              <label>Nama Mata Pelajaran
+                <input type="text" id="mapel-nama" required placeholder="contoh: Sejarah Kebudayaan Islam">
+              </label>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+              <button type="button" class="btn sm-btn hide" id="mapel-cancel-edit">Batal</button>
+              <button type="submit" class="btn pri sm-btn" id="mapel-submit-btn">Simpan Mata Pelajaran</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="adm-box">
+          <h4>Daftar Mata Pelajaran Aktif</h4>
+          <div id="adm-list-mapel"></div>
+        </div>
+      </div>
+
+      <!-- TAB 3: PENGATURAN UMUM & KELAS -->
+      <div id="tab-umum" class="adm-tab hide">
+        <div class="adm-box">
+          <h4>Identitas Website & Madrasah</h4>
+          <form id="form-identitas">
+            <div class="adm-grid">
+              <label>Judul Utama Aplikasi
+                <input type="text" id="cfg-title" required placeholder="Gudang Materi">
+              </label>
+              <label>Nama Madrasah / Sekolah
+                <input type="text" id="cfg-school" required placeholder="MA Al-Jafariyah">
+              </label>
+            </div>
+            <label>Daftar Tingkat Kelas (Pisahkan dengan koma, contoh: X, XI, XII)
+              <input type="text" id="cfg-kelas" required placeholder="X, XI, XII">
+            </label>
+            <div style="display:flex;justify-content:flex-end;margin-top:8px">
+              <button type="submit" class="btn pri sm-btn">Simpan Identitas & Kelas</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <p class="status-msg" id="adm-status">Semua perubahan langsung tersimpan otomatis ke Cloud Firebase.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Integrasi Cloud Firebase (Modular SDK + Firestore Realtime) -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+// Konfigurasi Firebase sesuai permintaan pengguna
+const firebaseConfig = {
+  apiKey: "AIzaSyDmFLSsvUFdArDMopHwkivUpBzlX1p6Bak",
+  authDomain: "hanif-coder.firebaseapp.com",
+  projectId: "hanif-coder",
+  storageBucket: "hanif-coder.firebasestorage.app",
+  messagingSenderId: "622765645302",
+  appId: "1:622765645302:web:6fc3aaccaea2e7c62a7bd7",
+  measurementId: "G-6LJBLMV4BK"
+};
+
+// Inisialisasi Firebase & Firestore
+const app = initializeApp(firebaseConfig);
+let analytics = null;
+try { analytics = getAnalytics(app); } catch (_) {}
+const db = getFirestore(app);
+const docRef = doc(db, "gudang_materi", "main_data");
+
+// Data Bawaan Awal (Digunakan jika database cloud masih kosong)
+let APP_TITLE = "Gudang Materi";
+let SCHOOL_NAME = "MA Al-Jafariyah";
+let KELAS = ["X", "XI", "XII"];
+let DATA = [
+ {id:"bind",nama:"Bahasa Indonesia",kelas:{X:[
+  {no:1,tgl:"2026-07-20",judul:"Hakikat dan Fungsi Bahasa Indonesia",isi:[
+   "Bahasa Indonesia adalah bahasa persatuan sekaligus bahasa resmi negara. Ikrar Sumpah Pemuda 1928 menjadikannya pengikat bagi ratusan suku yang berbeda bahasa daerahnya.",
+   "Fungsi utamanya ada empat: alat komunikasi, alat berpikir, alat mengungkapkan perasaan, dan alat memahami budaya. Keempatnya bekerja bersama setiap kali kita berbicara, menulis, menyimak, dan membaca.",
+   "Agar mudah diingat, ringkas dengan kata kunci: pemersatu, komunikasi, nalar, ekspresi. Memahami fungsi ini adalah pintu masuk sebelum mempelajari teks, ejaan, dan tata kalimat."]},
+  {no:2,tgl:"2026-07-27",judul:"Ragam Bahasa: Baku dan Nonbaku",isi:[
+   "Ragam bahasa adalah variasi pemakaian bahasa menurut situasi, media, dan lawan bicara. Kita memakai bahasa yang berbeda saat bercakap dengan teman dan saat menulis surat resmi kepada kepala madrasah.",
+   "Ragam baku mengikuti kaidah yang disepakati: ejaan, pilihan kata, dan susunan kalimat yang tertib. Ragam nonbaku lebih longgar, lazim dalam percakapan santai, dan banyak dipengaruhi bahasa daerah.",
+   "Kuncinya adalah ketepatan. Gunakan ragam baku untuk tugas, karya tulis, dan pidato; gunakan ragam santai pada situasi yang memang santai."]},
+  {no:3,tgl:"2026-08-03",judul:"Ejaan dan Tanda Baca Dasar",isi:[
+   "Ejaan adalah aturan menulis kata dan melambangkan bunyi bahasa. Pedoman yang dipakai adalah ejaan resmi terbaru yang ditetapkan Badan Bahasa.",
+   "Tanda baca berfungsi menandai jeda, nada, dan hubungan antarbagian kalimat. Tiga yang paling sering dipakai: titik untuk mengakhiri kalimat, koma untuk memisahkan unsur, dan tanda tanya untuk kalimat pertanyaan.",
+   "Biasakan memeriksa tulisan sebelum dikumpulkan: huruf kapital di awal kalimat dan nama, awalan di- ditulis serangkai dengan kata kerja, dan di sebagai kata depan ditulis terpisah."]}
+ ],XI:[],XII:[]}},
+ {id:"fikih",nama:"Fikih",kelas:{}},
+ {id:"akidah",nama:"Akidah Akhlak",kelas:{}},
+ {id:"quran",nama:"Al-Qur’an Hadis",kelas:{}},
+ {id:"arab",nama:"Bahasa Arab",kelas:{}}
+];
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = (t, s) => {
+  if (!t) return "-";
+  const d = new Date(t + "T00:00:00");
+  if (isNaN(d)) return t;
+  return d.toLocaleDateString("id-ID", s ? {day:"numeric",month:"short",year:"numeric"} : {weekday:"long",day:"numeric",month:"long",year:"numeric"});
+};
+const cnt = (s, k) => (s.kelas && s.kelas[k] ? s.kelas[k] : []).length;
+const msg = t => $("msg").textContent = t;
+const note = t => $("note").textContent = t;
+
+// State aplikasi
+let S = null, K = null, L = [], I = 0;
+let viewMode = "home"; // "home" | "class" | "reader"
+let isAdminUnlocked = false;
+let initialHashHandled = false;
+
+// Update status koneksi di pojok kanan bawah
+function setSyncStatus(state, text) {
+  const dot = $("sync-dot");
+  dot.className = "dot" + (state === "ok" ? " ok" : state === "err" ? " err" : "");
+  $("sync-text").textContent = text;
+}
+
+// Simpan seluruh state ke Cloud Firestore
+async function saveToCloud(statusMessage = "Perubahan berhasil disimpan ke Cloud Firebase.") {
+  setSyncStatus("wait", "Menyimpan…");
+  $("adm-status").textContent = "Menyimpan ke Cloud Firebase…";
+  try {
+    await setDoc(docRef, {
+      appTitle: APP_TITLE,
+      schoolName: SCHOOL_NAME,
+      kelas: KELAS,
+      data: DATA,
+      updatedAt: new Date().toISOString()
+    });
+    setSyncStatus("ok", "Realtime Aktif");
+    $("adm-status").textContent = statusMessage;
+  } catch (err) {
+    console.error("Gagal menyimpan ke Firebase:", err);
+    setSyncStatus("err", "Gagal Simpan");
+    $("adm-status").textContent = "Gagal menyimpan ke Firebase: " + (err.message || "Periksa Rules Firestore Anda.");
+  }
+}
+
+// Perbarui tampilan header identitas
+function syncHeaderIdentity() {
+  $("ui-title").textContent = APP_TITLE;
+  $("ui-sch").textContent = SCHOOL_NAME;
+  $("hb").textContent = APP_TITLE;
+  document.title = `${APP_TITLE} ${SCHOOL_NAME}`;
+}
+
+// Render ulang tampilan aktif saat ada perubahan data realtime dari Firebase
+function refreshActiveView() {
+  syncHeaderIdentity();
+  if (viewMode === "home") {
+    showHome();
+  } else if (viewMode === "class" && S) {
+    const updatedS = DATA.find(x => x.id === S.id);
+    if (updatedS) pickClass(updatedS);
+    else showHome();
+  } else if (viewMode === "reader" && S && K) {
+    const updatedS = DATA.find(x => x.id === S.id);
+    if (updatedS && KELAS.includes(K)) {
+      const currentNo = L[I] ? L[I].no : undefined;
+      openReader(updatedS, K, currentNo, true);
+    } else {
+      showHome();
+    }
+  }
+  if (!$("admin-modal").classList.contains("hide")) {
+    renderAdminAll();
+  }
+}
+
+// Berlangganan pembaruan realtime dari Firestore
+onSnapshot(docRef, (snap) => {
+  if (snap.exists()) {
+    const d = snap.data();
+    if (d.appTitle) APP_TITLE = d.appTitle;
+    if (d.schoolName) SCHOOL_NAME = d.schoolName;
+    if (Array.isArray(d.kelas) && d.kelas.length) KELAS = d.kelas;
+    if (Array.isArray(d.data)) DATA = d.data;
+    setSyncStatus("ok", "Realtime Aktif");
+  } else {
+    // Jika dokumen belum ada di Firestore, inisialisasi otomatis dengan data bawaan
+    saveToCloud("Database awal berhasil dibuat di Cloud Firebase.");
+  }
+
+  if (!initialHashHandled) {
+    initialHashHandled = true;
+    const h = location.hash.slice(1).split("-");
+    const s0 = DATA.find(s => s.id === h[0]);
+    if (s0 && KELAS.includes(h[1])) {
+      openReader(s0, h[1], +h[2] || undefined);
+      return;
+    }
+  }
+  refreshActiveView();
+}, (err) => {
+  console.error("Realtime listener error:", err);
+  setSyncStatus("err", "Mode Offline");
+  $("adm-status").textContent = "Koneksi realtime terkendala. Pastikan Firestore Rules mengizinkan baca/tulis.";
+});
+
+/* ================= NAVIGASI UTAMA ================= */
+function showHome() {
+  viewMode = "home";
+  $("reader").classList.add("hide");
+  $("home").classList.remove("hide");
+  $("step").innerHTML = "<h2>Pilih Mata Pelajaran</h2>" + DATA.map((s, i) => {
+    const n = KELAS.reduce((a, k) => a + cnt(s, k), 0);
+    return `<button class="row" data-i="${i}"><span>${esc(s.nama)}</span><small>${n ? n + " materi" : "Segera hadir"}</small></button>`;
+  }).join("");
+  $("step").querySelectorAll(".row").forEach(b => b.onclick = () => pickClass(DATA[b.dataset.i]));
+}
+
+function pickClass(s) {
+  viewMode = "class";
+  S = s;
+  $("step").innerHTML = `<h2>Pilih Kelas</h2><p class="sub">${esc(s.nama)}</p><div class="cls">` + KELAS.map(k => {
+    const n = cnt(s, k);
+    return `<button data-k="${esc(k)}"><b>${esc(k)}</b><small>${n ? n + " materi" : "Belum ada materi"}</small></button>`;
+  }).join("") + `</div><button class="lnk" id="bk">Ganti mata pelajaran</button>`;
+  $("step").querySelectorAll(".cls button").forEach(b => b.onclick = () => openReader(s, b.dataset.k));
+  $("bk").onclick = showHome;
+}
+
+function openReader(s, k, no, preserveScroll = false) {
+  viewMode = "reader";
+  S = s; K = k;
+  if (!preserveScroll) I = 0;
+  L = ((s.kelas && s.kelas[k]) || []).slice().sort((a, b) => a.no - b.no);
+  $("home").classList.add("hide");
+  $("reader").classList.remove("hide");
+  $("reader").classList.toggle("none", !L.length);
+  $("crumb").textContent = `${s.nama}, Kelas ${k}`;
+  if (!preserveScroll) {
+    $("qn").value = "";
+    $("qd").value = "";
+    msg("");
+    note("");
+  }
+  let h = "", sm = 0;
+  L.forEach((m, j) => {
+    const t = Math.ceil(m.no / 20);
+    if (t !== sm) { sm = t; h += `<div class="sm">Semester ${t}</div>`; }
+    h += `<button class="it" data-i="${j}"><b>Materi ${m.no}</b><span>${esc(m.judul)}</span><small>${fmt(m.tgl, 1)}</small></button>`;
+  });
+  $("list").innerHTML = h || '<p class="mut">Belum ada materi di kelas ini.</p>';
+  $("list").querySelectorAll(".it").forEach(b => b.onclick = () => go(+b.dataset.i));
+  const targetIdx = no !== undefined ? L.findIndex(m => m.no === no) : I;
+  go(Math.max(0, targetIdx));
+  if (!preserveScroll) scrollTo(0, 0);
+}
+
+function go(i) {
+  const p = $("paper");
+  if (!L.length) {
+    p.className = "paper";
+    p.innerHTML = `<div class="lh">${esc(SCHOOL_NAME)}<span>${esc(S.nama)}, Kelas ${esc(K)}</span></div><div class="empty">Materi untuk kelas ini belum diunggah.<br>Silakan kembali lagi nanti.</div>`;
+    return;
+  }
+  i = Math.min(Math.max(i, 0), L.length - 1);
+  const dir = Math.sign(i - I), m = L[i];
+  I = i;
+  p.className = "paper";
+  void p.offsetWidth;
+  if (dir) p.classList.add(dir > 0 ? "r" : "l");
+  const paragraphs = Array.isArray(m.isi) ? m.isi : String(m.isi || "").split("\n");
+  p.innerHTML = `<div class="lh">${esc(SCHOOL_NAME)}<span>${esc(S.nama)}, Kelas ${esc(K)}</span></div><h2>${esc(m.judul)}</h2><div class="meta">Materi ${m.no}, ${fmt(m.tgl)}</div><div class="tx">${paragraphs.map(x => `<p>${esc(x)}</p>`).join("")}</div><div class="pg">${i + 1} / ${L.length}</div>`;
+  $("st").textContent = `Pertemuan ${i + 1} dari ${L.length}`;
+  $("pv").disabled = i === 0;
+  $("nx").disabled = i === L.length - 1;
+  document.querySelectorAll(".it").forEach(b => {
+    const on = +b.dataset.i === i;
+    b.classList.toggle("on", on);
+    if (on) b.scrollIntoView({block: "nearest"});
+  });
+}
+
+$("pv").onclick = () => go(I - 1);
+$("nx").onclick = () => go(I + 1);
+$("hb").onclick = $("hc").onclick = showHome;
+$("qn").oninput = () => {
+  const v = +$("qn").value;
+  if (!v) { msg(""); return; }
+  const j = L.findIndex(m => m.no === v);
+  if (j < 0) msg(`Materi ke-${v} belum tersedia.`);
+  else { msg(""); go(j); }
+};
+$("qd").onchange = () => {
+  const v = $("qd").value;
+  if (!v) return;
+  const j = L.findIndex(m => m.tgl === v);
+  if (j < 0) msg(`Tidak ada pertemuan pada ${fmt(v, 1)}.`);
+  else { msg(""); go(j); }
+};
+addEventListener("keydown", e => {
+  if ($("reader").classList.contains("hide") || !$("admin-modal").classList.contains("hide") || !$("login-modal").classList.contains("hide") || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+  if (e.key === "ArrowLeft") go(I - 1);
+  if (e.key === "ArrowRight") go(I + 1);
+});
+
+/* ================= UNDUH PDF ================= */
+const clean = s => String(s || "").replace(/[’‘]/g, "'").replace(/[“”]/g, '"');
+const slug = s => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function makePDF(list) {
+  const d = new window.jspdf.jsPDF({unit: "mm", format: "a4"}), M = 25, TW = 160;
+  list.forEach((m, i) => {
+    if (i) d.addPage();
+    let y = 24;
+    d.setFont("times", "italic"); d.setFontSize(10); d.setTextColor(95, 113, 108);
+    d.text(clean(SCHOOL_NAME), M, y);
+    d.text(`${clean(S.nama)}, Kelas ${clean(K)}`, 185, y, {align: "right"});
+    y += 3; d.setDrawColor(168, 128, 58); d.setLineWidth(.5); d.line(M, y, 185, y); y += 14;
+    d.setFont("times", "bold"); d.setFontSize(20); d.setTextColor(28, 43, 40);
+    const t = d.splitTextToSize(clean(m.judul), TW); d.text(t, M, y); y += t.length * 8.5;
+    d.setFont("times", "normal"); d.setFontSize(10); d.setTextColor(95, 113, 108);
+    d.text(`Materi ${m.no}, ${fmt(m.tgl)}`, M, y); y += 11;
+    d.setFontSize(12); d.setTextColor(28, 43, 40);
+    const paragraphs = Array.isArray(m.isi) ? m.isi : String(m.isi || "").split("\n");
+    paragraphs.forEach(p => {
+      d.splitTextToSize(clean(p), TW).forEach(l => {
+        if (y > 270) { d.addPage(); y = 25; }
+        d.text(l, M, y); y += 6.4;
+      });
+      y += 3.5;
+    });
+  });
+  const n = d.getNumberOfPages();
+  for (let p = 1; p <= n; p++) {
+    d.setPage(p); d.setFont("times", "normal"); d.setFontSize(9); d.setTextColor(95, 113, 108);
+    d.text(`Halaman ${p} dari ${n}`, 105, 287, {align: "center"});
+  }
+  return d.output("blob");
+}
+
+async function unduh(list, fn, btn) {
+  const lab = btn.textContent; btn.disabled = true; btn.textContent = "Menyiapkan PDF…"; note("");
+  try {
+    if (!window.jspdf) throw 0;
+    const blob = makePDF(list);
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = fn;
+    a.click();
+    note("PDF berhasil diunduh.");
+  } catch (e) {
+    note("PDF belum bisa dibuat. Periksa koneksi internet lalu coba lagi.");
+  }
+  btn.disabled = false; btn.textContent = lab;
+}
+$("d1").onclick = () => L.length && unduh([L[I]], `Materi-${L[I].no}-${slug(L[I].judul)}.pdf`, $("d1"));
+$("d2").onclick = () => L.length && unduh(L, `${slug(S.nama)}-kelas-${K}.pdf`, $("d2"));
+
+/* ================= LOGIN & PANEL ADMIN ================= */
+let confirmCallback = null;
+function askConfirm(message, onYes) {
+  $("confirm-text").textContent = message;
+  confirmCallback = onYes;
+  $("confirm-modal").classList.remove("hide");
+}
+$("confirm-no").onclick = () => {
+  $("confirm-modal").classList.add("hide");
+  confirmCallback = null;
+};
+$("confirm-yes").onclick = () => {
+  $("confirm-modal").classList.add("hide");
+  if (confirmCallback) confirmCallback();
+  confirmCallback = null;
+};
+
+$("admin-fab").onclick = () => {
+  if (isAdminUnlocked) {
+    openAdminModal();
+  } else {
+    $("adm-pass").value = "";
+    $("login-err").textContent = "";
+    $("login-modal").classList.remove("hide");
+    setTimeout(() => $("adm-pass").focus(), 50);
+  }
+};
+
+$("login-cancel").onclick = () => $("login-modal").classList.add("hide");
+
+$("login-form").onsubmit = (e) => {
+  e.preventDefault();
+  const val = $("adm-pass").value;
+  if (val === "12345") {
+    isAdminUnlocked = true;
+    $("login-modal").classList.add("hide");
+    openAdminModal();
+  } else {
+    $("login-err").textContent = "Password salah! Silakan coba lagi.";
+  }
+};
+
+$("adm-close").onclick = () => $("admin-modal").classList.add("hide");
+$("adm-logout").onclick = () => {
+  isAdminUnlocked = false;
+  $("admin-modal").classList.add("hide");
+};
+
+// Tab Switching di dalam Modal Admin
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".adm-tab").forEach(t => t.classList.add("hide"));
+    btn.classList.add("active");
+    $(btn.dataset.tab).classList.remove("hide");
+  };
+});
+
+function openAdminModal() {
+  renderAdminAll();
+  // Jika pengguna sedang membuka suatu pelajaran & kelas, langsung arahkan dropdown ke sana
+  if (S) $("adm-sel-mapel").value = S.id;
+  if (K) $("adm-sel-kelas").value = K;
+  renderAdminMateriList();
+  $("admin-modal").classList.remove("hide");
+}
+
+function renderAdminAll() {
+  // 1. Dropdown Mata Pelajaran & Kelas di Tab Materi
+  const prevMapel = $("adm-sel-mapel").value || (S ? S.id : (DATA[0] ? DATA[0].id : ""));
+  const prevKelas = $("adm-sel-kelas").value || (K ? K : (KELAS[0] || ""));
+
+  $("adm-sel-mapel").innerHTML = DATA.map(s => `<option value="${esc(s.id)}">${esc(s.nama)} (${esc(s.id)})</option>`).join("");
+  if (DATA.some(s => s.id === prevMapel)) $("adm-sel-mapel").value = prevMapel;
+
+  $("adm-sel-kelas").innerHTML = KELAS.map(k => `<option value="${esc(k)}">Kelas ${esc(k)}</option>`).join("");
+  if (KELAS.includes(prevKelas)) $("adm-sel-kelas").value = prevKelas;
+
+  renderAdminMateriList();
+  renderAdminMapelList();
+
+  // 3. Isi Form Identitas & Kelas
+  $("cfg-title").value = APP_TITLE;
+  $("cfg-school").value = SCHOOL_NAME;
+  $("cfg-kelas").value = KELAS.join(", ");
+}
+
+$("adm-sel-mapel").onchange = () => { resetMateriForm(); renderAdminMateriList(); };
+$("adm-sel-kelas").onchange = () => { resetMateriForm(); renderAdminMateriList(); };
+
+/* --- CRUD TAB 1: MATERI --- */
+function getSelectedSubjectObj() {
+  const id = $("adm-sel-mapel").value;
+  return DATA.find(s => s.id === id);
+}
+
+function renderAdminMateriList() {
+  const subj = getSelectedSubjectObj();
+  const kls = $("adm-sel-kelas").value;
+  const container = $("adm-list-materi");
+
+  if (!subj || !kls) {
+    container.innerHTML = `<p class="mut">Pilih mata pelajaran dan kelas terlebih dahulu.</p>`;
+    return;
+  }
+  if (!subj.kelas) subj.kelas = {};
+  if (!Array.isArray(subj.kelas[kls])) subj.kelas[kls] = [];
+
+  const list = subj.kelas[kls].slice().sort((a, b) => a.no - b.no);
+  if (!list.length) {
+    container.innerHTML = `<p class="mut">Belum ada materi di ${esc(subj.nama)} Kelas ${esc(kls)}.</p>`;
+    return;
+  }
+
+  container.innerHTML = list.map((m) => `
+    <div class="adm-item">
+      <div>
+        <b>Materi ${m.no}: ${esc(m.judul)}</b>
+        <div class="mut" style="font-size:.8rem">${fmt(m.tgl, 1)} • ${(Array.isArray(m.isi) ? m.isi.length : 1)} paragraf</div>
+      </div>
+      <div class="adm-actions">
+        <button type="button" class="btn sm-btn" data-edit-no="${m.no}">Edit</button>
+        <button type="button" class="btn dng sm-btn" data-del-no="${m.no}">Hapus</button>
+      </div>
+    </div>
+  `).join("");
+
+  container.querySelectorAll("[data-edit-no]").forEach(b => {
+    b.onclick = () => {
+      const targetNo = +b.dataset.editNo;
+      const idx = subj.kelas[kls].findIndex(x => x.no === targetNo);
+      if (idx < 0) return;
+      const item = subj.kelas[kls][idx];
+      $("mat-edit-idx").value = idx;
+      $("mat-no").value = item.no;
+      $("mat-tgl").value = item.tgl;
+      $("mat-judul").value = item.judul;
+      $("mat-isi").value = Array.isArray(item.isi) ? item.isi.join("\n\n") : String(item.isi || "");
+      $("form-materi-title").textContent = `Edit Materi Ke-${item.no}`;
+      $("mat-submit-btn").textContent = "Perbarui Materi";
+      $("mat-cancel-edit").classList.remove("hide");
+    };
+  });
+
+  container.querySelectorAll("[data-del-no]").forEach(b => {
+    b.onclick = () => {
+      const targetNo = +b.dataset.delNo;
+      askConfirm(`Hapus Materi ke-${targetNo} dari ${subj.nama} Kelas ${kls}?`, async () => {
+        subj.kelas[kls] = subj.kelas[kls].filter(x => x.no !== targetNo);
+        resetMateriForm();
+        renderAdminMateriList();
+        await saveToCloud(`Materi ke-${targetNo} berhasil dihapus.`);
+      });
+    };
+  });
+}
+
+function resetMateriForm() {
+  $("mat-edit-idx").value = "-1";
+  $("form-materi").reset();
+  $("form-materi-title").textContent = "Tambah Materi Baru";
+  $("mat-submit-btn").textContent = "Simpan Materi ke Cloud";
+  $("mat-cancel-edit").classList.add("hide");
+}
+$("mat-cancel-edit").onclick = resetMateriForm;
+
+$("form-materi").onsubmit = async (e) => {
+  e.preventDefault();
+  const subj = getSelectedSubjectObj();
+  const kls = $("adm-sel-kelas").value;
+  if (!subj || !kls) return;
+
+  if (!subj.kelas) subj.kelas = {};
+  if (!Array.isArray(subj.kelas[kls])) subj.kelas[kls] = [];
+
+  const no = +$("mat-no").value;
+  const tgl = $("mat-tgl").value;
+  const judul = $("mat-judul").value.trim();
+  const isiRaw = $("mat-isi").value.split(/\n+/).map(s => s.trim()).filter(Boolean);
+  const editIdx = +$("mat-edit-idx").value;
+
+  const newObj = { no, tgl, judul, isi: isiRaw };
+
+  if (editIdx >= 0 && subj.kelas[kls][editIdx]) {
+    subj.kelas[kls][editIdx] = newObj;
+  } else {
+    // Jika nomor materi sudah ada, timpa atau tambahkan
+    const existingIdx = subj.kelas[kls].findIndex(x => x.no === no);
+    if (existingIdx >= 0) subj.kelas[kls][existingIdx] = newObj;
+    else subj.kelas[kls].push(newObj);
+  }
+
+  subj.kelas[kls].sort((a, b) => a.no - b.no);
+  resetMateriForm();
+  renderAdminMateriList();
+  await saveToCloud(`Materi "${judul}" berhasil disimpan ke Cloud.`);
+};
+
+/* --- CRUD TAB 2: MATA PELAJARAN --- */
+function renderAdminMapelList() {
+  const container = $("adm-list-mapel");
+  if (!DATA.length) {
+    container.innerHTML = `<p class="mut">Belum ada mata pelajaran.</p>`;
+    return;
+  }
+  container.innerHTML = DATA.map((s, idx) => {
+    const total = KELAS.reduce((acc, k) => acc + cnt(s, k), 0);
+    return `
+      <div class="adm-item">
+        <div>
+          <b>${esc(s.nama)}</b> <small class="mut">(ID: ${esc(s.id)} • ${total} materi)</small>
+        </div>
+        <div class="adm-actions">
+          <button type="button" class="btn sm-btn" data-edit-mapel="${idx}">Edit</button>
+          <button type="button" class="btn dng sm-btn" data-del-mapel="${idx}">Hapus</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  container.querySelectorAll("[data-edit-mapel]").forEach(b => {
+    b.onclick = () => {
+      const idx = +b.dataset.editMapel;
+      const item = DATA[idx];
+      if (!item) return;
+      $("mapel-edit-index").value = idx;
+      $("mapel-id").value = item.id;
+      $("mapel-nama").value = item.nama;
+      $("form-mapel-title").textContent = `Edit Mata Pelajaran: ${item.nama}`;
+      $("mapel-submit-btn").textContent = "Perbarui Mata Pelajaran";
+      $("mapel-cancel-edit").classList.remove("hide");
+    };
+  });
+
+  container.querySelectorAll("[data-del-mapel]").forEach(b => {
+    b.onclick = () => {
+      const idx = +b.dataset.delMapel;
+      const item = DATA[idx];
+      if (!item) return;
+      askConfirm(`Hapus mata pelajaran "${item.nama}" beserta seluruh materinya?`, async () => {
+        DATA.splice(idx, 1);
+        resetMapelForm();
+        renderAdminAll();
+        await saveToCloud(`Mata pelajaran "${item.nama}" dihapus.`);
+      });
+    };
+  });
+}
+
+function resetMapelForm() {
+  $("mapel-edit-index").value = "-1";
+  $("form-mapel").reset();
+  $("form-mapel-title").textContent = "Tambah / Edit Mata Pelajaran";
+  $("mapel-submit-btn").textContent = "Simpan Mata Pelajaran";
+  $("mapel-cancel-edit").classList.add("hide");
+}
+$("mapel-cancel-edit").onclick = resetMapelForm;
+
+$("form-mapel").onsubmit = async (e) => {
+  e.preventDefault();
+  const id = $("mapel-id").value.trim().toLowerCase().replace(/[^a-z0-9_-]/g, "");
+  const nama = $("mapel-nama").value.trim();
+  const editIdx = +$("mapel-edit-index").value;
+  if (!id || !nama) return;
+
+  if (editIdx >= 0 && DATA[editIdx]) {
+    DATA[editIdx].id = id;
+    DATA[editIdx].nama = nama;
+  } else {
+    const exist = DATA.find(x => x.id === id);
+    if (exist) {
+      exist.nama = nama;
+    } else {
+      const emptyKelas = {};
+      KELAS.forEach(k => emptyKelas[k] = []);
+      DATA.push({ id, nama, kelas: emptyKelas });
+    }
+  }
+
+  resetMapelForm();
+  renderAdminAll();
+  await saveToCloud(`Mata pelajaran "${nama}" berhasil disimpan.`);
+};
+
+/* --- CRUD TAB 3: IDENTITAS & DAFTAR KELAS --- */
+$("form-identitas").onsubmit = async (e) => {
+  e.preventDefault();
+  const newTitle = $("cfg-title").value.trim();
+  const newSchool = $("cfg-school").value.trim();
+  const newKelas = $("cfg-kelas").value.split(",").map(s => s.trim()).filter(Boolean);
+
+  if (newTitle) APP_TITLE = newTitle;
+  if (newSchool) SCHOOL_NAME = newSchool;
+  if (newKelas.length) KELAS = newKelas;
+
+  renderAdminAll();
+  refreshActiveView();
+  await saveToCloud("Identitas website & daftar kelas berhasil diperbarui.");
+};
+
+// Tampilkan halaman awal sembari menunggu sinkronisasi Firebase
+showHome();
+</script>
+</body>
+</html>
